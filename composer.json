@@ -3,6 +3,7 @@
     "psr-4": {}
   },
   "require": {
-    "ark4ne/xl-reader": "^1.0"
+    "ark4ne/xl-reader": "^1.0",
+    "phpoffice/phpspreadsheet": "^1.28"
   }
 }
