@@ -13,5 +13,7 @@ class CsvManipualtor{
         }
         //fecha o arquivo
         fclose($archive);
+        //retorna conteudo do arquivo
+        return file_get_contents("$file_name.csv");
     }
 }
