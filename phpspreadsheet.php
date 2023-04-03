@@ -7,8 +7,13 @@ require_once 'vendor/autoload.php';
 $file_name = "files/p3.xls";
 //chama leitura do arquivo
 $xlsx_content = safe_read_file($file_name);
-//chama a criacao de novo arquivo
-create_new_csv_archive('files/p3-csv', $xlsx_content);
+//se houver conteudo
+if($xlsx_content){
+    //chama a criacao de novo arquivo
+    create_new_csv_archive('files/p3-csv', $xlsx_content);
+}else{
+    echo "nao foi possivel realizar a conversao. Dica: verifique a extensao do arquivo";
+}
 
 //desc: faz criacao de arquivo csv com base nos dados do arquivo xlsx recebido
 //params: (string) nome do arquivo, (array) dados recebidos
