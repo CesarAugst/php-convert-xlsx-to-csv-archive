@@ -1,5 +1,5 @@
 # php-convert-xlsx-to-csv-archive
-Projeto desenvolvido com o intuito de receber arquivos xlsx e converter para arquivos csv
+Como o projeto funciona: O projeto base recebe um arquivo XLSX e faz a conversão para CVS. O intuito do projeto base é ser usado como micro-serviço (não implementado)
 
 ## Como executar
 - primeiramente usar o comando ```composer update``` para gerar o diretório /vendor
