@@ -5,9 +5,10 @@ Como o projeto funciona: O projeto base recebe um arquivo XLSX e faz a conversã
 - primeiramente usar o comando ```composer update``` para gerar o diretório /vendor
 
 ## Bibliotecas utilizadas
-- [arkne/xl-reader](https://github.com/Ark4ne/xl-reader)
-  - *Comando de instalação:* ```composer require arkne/xl-reader```
-
 - [phpoffice/phpspreadsheet](https://github.com/phpoffice/phpspreadsheet)
   - *Comando de instalação:* ```composer require phpoffice/phpspreadsheet```
   - *Informações adicionais:* foi necessario habilitar as extensoes ```extension=fileinfo``` e ```extension=gd2``` no php.ini
+
+- [arkne/xl-reader](https://github.com/Ark4ne/xl-reader)
+  - Devido a incompatibilidade dessa biblioteca com arquivos xls, seu uso foi descontinuado no projeto
+  - *Comando de instalação:* ```composer require arkne/xl-reader```
