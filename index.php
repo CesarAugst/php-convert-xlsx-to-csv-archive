@@ -2,11 +2,11 @@
 //necessario para usar logica do composer
 require_once "vendor/autoload.php";
 //arquivo xlsx para converter
-$file = "planilha-lorem.xlsx";
+$file = "files/p1.xls";
 //chama leitura do arquivo
 $xlsx_content = safe_read_file($file);
 //chama a criacao de novo arquivo
-create_new_csv_archive('planilha-lorem-convertida', $xlsx_content);
+create_new_csv_archive('files/p1-csv', $xlsx_content);
 
 //desc: faz criacao de arquivo csv com base nos dados do arquivo xlsx recebido
 //params: (string) nome do arquivo, (array) dados recebidos
