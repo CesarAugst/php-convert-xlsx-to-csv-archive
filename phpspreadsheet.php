@@ -41,13 +41,18 @@ function safe_read_file($file_name){
 
     //se for do formato xlz
     if('xls' == $extension){
+        //recebe funcao de xls para ler os dados do arquivo
         $reader = new PhpOffice\PhpSpreadsheet\Reader\Xls();
     //se for do formato xlsx
-    }elseif ('xlsx' == $extension){
+    }elseif ('xlsx' == $extension) {
+        //recebe funcao de xlsx para ler os dados do arquivo
         $reader = new PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+    }elseif('csv' == $extension){
+        //recebe funcao de csv para ler os dados do arquivo
+        $reader = new PhpOffice\PhpSpreadsheet\Reader\Csv();
     //outros formatos nao sao validos
     }else{
-        $reader = null;
+        return null;
     }
     //prepara para leitura do arquivo
     $reader = $reader->load($file_name);
