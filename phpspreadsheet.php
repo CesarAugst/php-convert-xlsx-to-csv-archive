@@ -2,9 +2,9 @@
 //necessario para utilizacao do composer
 require_once 'vendor/autoload.php';
 
-
 //pega nome do arquivo
 $file_name = "files/p3.xls";
+
 //chama leitura do arquivo
 $xlsx_content = safe_read_file($file_name);
 //se houver conteudo

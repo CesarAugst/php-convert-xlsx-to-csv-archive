@@ -3,6 +3,8 @@ Como o projeto funciona: O projeto base recebe um arquivo XLSX e faz a conversã
 
 ## Como executar
 - primeiramente usar o comando ```composer update``` para gerar o diretório /vendor
+- o arquivo atual para realizar a conversão é o phpspreadsheet.php, executeele para gerar a conversao
+- a fins de performace, o mais recomendado é o arquivoxl-reader.php
 
 ## Bibliotecas utilizadas
 - [phpoffice/phpspreadsheet](https://github.com/phpoffice/phpspreadsheet)
@@ -10,5 +12,5 @@ Como o projeto funciona: O projeto base recebe um arquivo XLSX e faz a conversã
   - *Informações adicionais:* foi necessario habilitar as extensoes ```extension=fileinfo``` e ```extension=gd2``` no php.ini
 
 - [arkne/xl-reader](https://github.com/Ark4ne/xl-reader)
-  - Devido a incompatibilidade dessa biblioteca com arquivos xls, seu uso foi descontinuado no projeto
+  - Biblioteca compativel apenas com arquivos .xlsx
   - *Comando de instalação:* ```composer require arkne/xl-reader```
