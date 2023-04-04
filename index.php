@@ -1,30 +1,32 @@
 <?php
+//necessario para utilizacao do composer
+require_once 'vendor/autoload.php';
 //modulos
 require_once "modules/file_manipulator.php";
+require_once "modules/csv_manipulator.php"; //criacao dos arquivos csv
+require_once 'modules/spreadsheet_manipulator.php'; //leitura de arquivos usando spreadsheet
 
-//fazz upload do arquivo e resgata o nome
-$file_name = FileManipulator::upload($_FILES);
-//se nao houve sucesso no upload do arquivo
-if(!$file_name){
-    //finaliza execucao
-    die('nao foi possivel converter');
+//faz upload do arquivo
+$file = FileManipulator::upload($_FILES, 'converter/');
+//se nao fez upload do arquivo
+if(!$file)die("");
+
+//pega nome do arquivo
+$file_name = "converter/" . $file['file_name'];
+//chama leitura do arquivo
+$xlsx_content = SpreadsheetManipulator::read_file($file_name . "." . $file['file_extension']);
+
+//se houver conteudo
+if($xlsx_content){
+    //caminho e nome completo doa arquivo
+    $complete_file_path = 'converter/'.$file['file_name']."-convertido.csv";
+    //chama a criacao de novo arquivo
+    $content = CsvManipualtor::create_new_file($complete_file_path, $xlsx_content);
+    //remove o arquivo
+    FileManipulator::delete("$complete_file_path.csv");
+}else{
+    $content = "";
 }
-//url da conversao
-$url = 'http://localhost:3000/converter_by_api.php';
-
-if (function_exists('curl_file_create')) { // php 5.5+
-    $cFile = curl_file_create("uploads/".$file_name['file_name'].".".$file_name["file_extension"]);
-} else { //
-    $cFile = '@' ."uploads/".$file_name['file_name'].".".$file_name["file_extension"];
-}
-die(var_dump("nao chegou aqui"));
-$post = array('assessoria_id' => 100, 'xls_ext' => $file_name['file_extension'], 'file_contents' => $cFile);
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, $url);
-curl_setopt($ch, CURLOPT_POST, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-$result = curl_exec($ch);
-curl_close ($ch);
-
-echo $result;
+FileManipulator::delete('converter/' . $file['file_name']. "." . $file['file_extension']);
+//exibe vazio
+echo $content;
