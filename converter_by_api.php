@@ -8,11 +8,8 @@ require_once 'modules/spreadsheet_manipulator.php'; //leitura de arquivos usando
 
 //faz upload do arquivo
 $file = FileManipulator::upload($_FILES, 'converter/');
-
 //se nao fez upload do arquivo
-if(!$file){
-    die("");
-}
+if(!$file)die("");
 
 //pega nome do arquivo
 $file_name = "converter/" . $file['file_name'];

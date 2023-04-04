@@ -21,14 +21,12 @@ class FileManipulator{
                 //encerra a execucao
                 die();
             }
+            //nome e data com hash
+            $name_hasehd = md5(implode(".", $file_name).date("Ymdhis"));
             //faz upload do arquivo (falta hash)
-            move_uploaded_file($file['tmp_name'], $path.$file['name']);
-            //remove a extnsao do array de nome do arquivo
-            array_pop($file_name);
-            //nome sem extensao
-            $name_withou_extension = implode(".", $file_name);
+            move_uploaded_file($file['tmp_name'], $path.$name_hasehd.".".$extension);
             //retorna o nome do arquivo e a extensao
-            return array("file_name" =>$name_withou_extension, "file_extension" => $extension);
+            return array("file_name" =>$name_hasehd, "file_extension" => $extension);
         }
         //retorna nulo
         return null;
