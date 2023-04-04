@@ -23,6 +23,11 @@ class FileManipulator{
             }
             //nome e data com hash
             $name_hasehd = md5(implode(".", $file_name).date("Ymdhis"));
+            //se o caminho do diretorio nao existir
+            if(!is_dir($path)){
+                //cria o diretorio
+                mkdir($path, 0755);
+            }
             //faz upload do arquivo (falta hash)
             move_uploaded_file($file['tmp_name'], $path.$name_hasehd.".".$extension);
             //retorna o nome do arquivo e a extensao
